@@ -9,7 +9,7 @@ spring:
     username: root
     password: 2026
   redis:
-    host: localhost # Redis服务器的IP地址,写虚拟机的IP地址
+    host: localhost # 写这个不报错，别改了
     port: 6379
     password: Hxl2026
     lettuce:
