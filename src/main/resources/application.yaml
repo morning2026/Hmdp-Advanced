@@ -5,11 +5,11 @@ spring:
     name: hmdp
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/hmdp?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/hmdp?allowPublicKeyRetrieval=true&useSSL=false #mysql8.0以上需要添加这个参数
     username: root
     password: 2026
   redis:
-    host: 127.0.0.1 # Redis服务器的IP地址,写虚拟机的IP地址
+    host: localhost # Redis服务器的IP地址,写虚拟机的IP地址
     port: 6379
     password: Hxl2026
     lettuce:
