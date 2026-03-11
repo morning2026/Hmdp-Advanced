@@ -25,8 +25,7 @@ public class RefreshTokenInterceptor implements HandlerInterceptor {
         // 1.获取请求头中的token
         String token = request.getHeader("authorization");
         if (StrUtil.isBlank(token)) {
-            // 不存在，拦截，返回401状态码，未授权
-            response.setStatus(401);
+            // 不存在，拦截，不要返回401状态码，会让前端闪退
             return true;
         }
         // 2.根据token在redis中获取用户
@@ -34,8 +33,7 @@ public class RefreshTokenInterceptor implements HandlerInterceptor {
         Map<Object, Object> userMap = stringRedisTemplate.opsForHash().entries(key);
         // 3.判断用户是否存在
         if (userMap.isEmpty()) {
-            // 4.用户不存在，返回401状态码，未授权
-            response.setStatus(401);
+            // 4.用户不存在，不要返回401状态码，会让前端闪退
             return true;
         }
         // 5.将HashMap转换为UserDTO
