@@ -7,7 +7,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/hmdp?allowPublicKeyRetrieval=true&useSSL=false #mysql8.0以上需要添加这个参数
     username: root
-    password: 2026
+    password: Hxl202688!
   redis:
     host: localhost # 写这个不报错，别改了
     port: 6379
