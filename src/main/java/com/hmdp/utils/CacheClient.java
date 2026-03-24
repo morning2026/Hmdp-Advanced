@@ -28,8 +28,8 @@ public class CacheClient {
         this.stringRedisTemplate = stringRedisTemplate;
     }
 
-    public void set(String key, Object value, Long timeout, TimeUnit unit) {
-        stringRedisTemplate.opsForValue().set(key, JSONUtil.toJsonStr(value), timeout, unit);
+    public void set(String key, Object value, Long time, TimeUnit unit) {
+        stringRedisTemplate.opsForValue().set(key, JSONUtil.toJsonStr(value), time, unit);
     }
 
     public void setWithLogicalExpire(String key, Object value, Long time, TimeUnit unit) {

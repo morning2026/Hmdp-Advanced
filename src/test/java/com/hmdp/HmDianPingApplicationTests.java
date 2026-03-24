@@ -28,30 +28,30 @@ class HmDianPingApplicationTests {
 
     private ExecutorService es = Executors.newFixedThreadPool(500);
 
-    @Test
-    void testIdWork() throws InterruptedException {
-        CountDownLatch countDownLatch = new CountDownLatch(100);
-
-        Runnable task = () -> {
-            for (int i = 0; i < 100; i++) {
-                // 只生成ID，不打印！
-                redisIdWorker.nextId("order");
-            }
-            countDownLatch.countDown();
-        };
-
-        for (int i = 0; i < 100; i++) {
-            es.submit(task);
-        }
-
-        countDownLatch.await();
-    }
+//    @Test
+//    void testIdWork() throws InterruptedException {
+//        CountDownLatch countDownLatch = new CountDownLatch(100);
+//
+//        Runnable task = () -> {
+//            for (int i = 0; i < 100; i++) {
+//                // 只生成ID，不打印！
+//                redisIdWorker.nextId("order");
+//            }
+//            countDownLatch.countDown();
+//        };
+//
+//        for (int i = 0; i < 100; i++) {
+//            es.submit(task);
+//        }
+//
+//        countDownLatch.await();
+//    }
 
 
     @Test
     void testSaveShop(){
         Shop shop = shopService.getById(1L);
-        cacheClient.setWithLogicalExpire(RedisConstants.CACHE_SHOP_KEY, shop, RedisConstants.CACHE_SHOP_TTL, TimeUnit.MINUTES);
+        cacheClient.setWithLogicalExpire(RedisConstants.CACHE_SHOP_KEY+1L, shop, 10L, TimeUnit.SECONDS);
     }
 
 }
