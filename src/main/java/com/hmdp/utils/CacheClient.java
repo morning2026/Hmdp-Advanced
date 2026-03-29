@@ -71,7 +71,6 @@ public class CacheClient {
         return r;
     }
 
-
     public <R,ID> R queryWithLogicalExpire(
             String keyPrefix, ID id, Class<R> type, Function<ID,R> dbCallBack,Long time, TimeUnit unit) {
         // 1.从redis查询商铺缓存
